@@ -29,7 +29,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8032',
+        target: 'http://localhost:8030',
         filter: function (pathname, req) {
           return pathname.match('^/api') && req.method === 'GET'
         }

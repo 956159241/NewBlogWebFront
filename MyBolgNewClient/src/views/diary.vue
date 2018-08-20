@@ -21,7 +21,7 @@
             <ul class="pagination">
               <li><a class="first-page" v-on:click="jumpToFirstPage()">首页</a></li>
               <li><a class="page-count"  v-on:click="jumpToPage(currentPage)">上一页</a></li>
-              <li v-bind:class="{ 'active': currentPage == (index - 1)}" v-on:click="jumpToPage(index)"  v-for="index in indexs"><a class="page-count">{{index}}</a></li>
+              <li v-bind:class="{ 'active': currentPage == (index - 1)}" v-on:click="jumpToPage(index)"  v-for="index in totalPages"><a class="page-count">{{index}}</a></li>
               <li><a class="page-count"  v-on:click="jumpToPage(currentPage + 2)" v-bind:class="">下一页</a></li>
               <li><a class="last-page" v-on:click="jumpToLastPage()">末页</a></li>
               <li><a>共 {{totalPages}} 页</a></li>
@@ -30,7 +30,7 @@
           <!--分页结束-->
         </div>
         <div class="col-lg-4 diaries-left">
-          <img src="../assets/../assets/images/touxiang.jpg" class="img-rounded diaries-header-img"><br/>
+          <img src="../assets/images/touxiang.jpg" class="img-rounded diaries-header-img"><br/>
           <div class="info">
             <span>QQ:956159241<br/></span>
             <span>网名：懒家伙<br/></span>
@@ -56,17 +56,26 @@
       return {
         index: '',
         diaries: '',
-        indexs: 3,  // 每次请求多少天日记
-        pageSize: 10,
+        pageSize: 3,
         currentPage: [],
-        totalPages: 3
+        totalCount: '',
+        totalPages: ''
       }
     },
     mounted: function () {
-      this.$http.get('/api/Diary/GetDiaries?pageIndex=0&pageSize=10').then(response => {
+      this.$http.get('/api/Diary/GetDiaries', {
+        params: {
+          pageIndex: 0,
+          pageSize: this.pageSize
+        }
+      }).then(response => {
         this.index = 1
         this.currentPage = 0
         this.diaries = response.data
+        this.totalPages = Math.ceil(parseInt(this.totalCount) / parseInt(this.pageSize))
+      })
+      this.$http.get('/api/Diary/GetDiariesTotalNum').then(response => {
+        this.totalCount = response.data
       })
     },
     filters: {
