@@ -7,6 +7,7 @@ import shows from '@/views/shows'
 import reads from '@/views/reads'
 import itBlogs from '@/views/itBlogs'
 import essay from '@/views/essay'
+import readDetail from '@/views/readDetail'
 
 Vue.use(Router)
 
@@ -51,6 +52,12 @@ export default new Router({
       path: '/essay',
       name: 'essay',
       component: essay
+    },
+    {
+      path: '/readDetail',
+      name: 'readDetail',
+      component: readDetail,
+      props: true
     }
   ]
 })

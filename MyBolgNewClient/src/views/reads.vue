@@ -196,23 +196,71 @@
                 </div>
               </div>
             </li>
+            <li>
+              <h3><img alt="东兔角" src="../assets/images/2014070607310131167.jpg"></h3>
+              <div class="hot_content">
+                <div class="hot_left"><a href="#"><img alt="东兔角" class="img_box" src="../assets/images/w_2014100614051151165.jpg"></a></div>
+                <div class="hot_top">
+                  <dl class="hot_line">
+                    <dd>
+                      <div class="t16 yahei">
+                        <span><a href="#">神崎·H·亚里亚</a></span>
+                        <span class="role_fen ml15">8.9</span>
+                      </div>
+                      <div class="mt10"><span class="bold">性别：</span><span class="color444">女</span></div>
+                      <div class="mt5">
+                        <span class="bold">属性：</span>
+                        <span class="color444">
+										<a href="#" class="mr7">长发</a>
+										<a href="#" class="mr7">傲娇</a>
+										<a href="#" class="mr7">贫RU</a>
+										<a href="#" class="mr7">双马尾</a>
+										<a href="#" class="mr7">枪械少女</a>
+										<a href="#" class="mr7">萝莉</a>
+										<a href="#" class="mr7">虎牙</a>
+									</span>
+                      </div>
+                      <div class="mt5"><span class="bold">动漫：</span><span class="color444"><a href="#">《绯弹的亚里亚》</a></span></div>
+                      <div class="mt5"><span class="bold">地区：</span><span class="color444"><a>日本</a></span></div>
+                    </dd>
+                    <div class="clear"></div>
+                  </dl>
+                </div>
+                <div class="clear"></div>
+                <div class="mt10">
+                  <span class="bold">动漫人物介绍：</span>
+                  <span class="color444">动漫作品《绯弹的亚里亚》中的女主角，英国著名侦探夏洛克·福尔摩斯的后裔，福尔摩斯四世。在第七卷可得知出生日为9月23日。没有遗传到祖先优秀推理能力的她，被家族视为废物。但性格不服输又自尊极强的亚里亚，凭借自身天生的战斗感及努力，在英国武侦界闯出了名气</span>
+                  <span class="ml20"><a href="#">详情&gt;&gt;</a></span>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="row" style="background-color: black;margin-top: 20px;">
+    <div class="row" style="margin-top: 20px;">
       <!--左侧阅读内容-->
       <div class="col-lg-8">
         <ul class="reads">
           <li v-for="item in reads" class="single-read">
             <!--<p>{{item.Content.substr(0,100)}}……<a @click="sendParams">跳转到单个文章界面</a></p>-->
             <div class="other">
-              <img v-bind:src="item.Picture" style="width:80px;height:80px;">
-              <span>测试Id：{{item.Id}}</span>
-              <span>时间：{{item.Time.substr(0,10) | formatDate}}</span>
-              <span>类型：{{item.Type}}</span>
-              <span>作者：{{item.Author}}</span>
-              <span>标题：{{item.Title}}</span>
+              <el-row>
+                <el-col :span="20"><div class="grid-content bg-purple head-line">
+                  <router-link :to="{ name: 'readDetail', query: { Id: item.Id, Time: item.Time, Type: item.Type, Content: item.Content }}">
+                    <h4 v-on:click="toContent(item.Id)" style="cursor: pointer;text-align: left;">标题：{{item.Title}}</h4>
+                    <!--<button @click="sendParams">传递</button>-->
+                  </router-link>
+                  <p class="abstract">{{item.Content.substr(0,100)}}...</p>
+                  <span>作者：{{item.Author}}</span>
+                  <span>测试Id：{{item.Id}}</span>
+                  <span>时间：{{item.Time.substr(0,10) | formatDate}}</span>
+                  <span>类型：{{item.Type}}</span>
+                </div></el-col>
+                <el-col :span="4"><div class="grid-content bg-purple text-img">
+                  <img v-bind:src="item.Picture" style="width:125px;height:100px;vertical-align: middle;margin-top: 30px;">
+                </div></el-col>
+              </el-row>
             </div>
           </li>
         </ul>
@@ -244,6 +292,7 @@
     name: 'reads',
     data () {
       return {
+        msg: 'msg test.',
         index: '',
         reads: '',
         indexs: 3,  // 每次请求多少条数据
@@ -256,11 +305,11 @@
       $('.nav_item').removeClass('active')
       $('#nav_index').addClass('active')
       var $centerwellFirst = $('#centerwell li:first')
-      $centerwellFirst.animate({ width: '560px' }, 300)
+      $centerwellFirst.animate({ width: '588px' }, 300)
       $centerwellFirst.find('h3').addClass('on')
       $('#centerwell li').click(function () {
         if (!$(this).is(':animated')) {
-          $(this).animate({ width: '560px' }, 300).siblings().animate({ width: '110px' }, 300)
+          $(this).animate({ width: '588px' }, 500).siblings().animate({ width: '110px' }, 450)
           $('#centerwell li h3').removeClass('on')
           $(this).find('h3').addClass('on')
         }
@@ -296,16 +345,15 @@
           this.currentPage = this.totalPages - 1
           this.reads = response.data
         })
+      },
+      sendParams () {
+        this.$router.push({
+          name: 'readDetail',
+          params: {
+            msgKey: this.msg
+          }
+        })
       }
-//      sendParams: function () {
-//        this.$router.push({
-//          path: 'yourPath',
-//          name: '要跳转的路径的 name,在 router 文件夹下的 index.js 文件内找',
-//          params: {
-//              name: 'name'
-//          },dataObj: this.msg}
-//          )
-//      }
     }
   }
 </script>
@@ -313,5 +361,8 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   @import "../../static/css/readsHead.css";
-
+  .grid-content.bg-purple.head-line{border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 15px;text-align: left;margin-right: 25px;}
+  .grid-content.bg-purple.head-line>span{font-size: 13px; line-height: 20px; color: #999;}
+  .abstract{font-size: 13px; line-height: 20px; color: #999;text-align: left;}
+  .pagination>li{cursor: pointer;}
 </style>
