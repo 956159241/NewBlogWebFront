@@ -1,8 +1,22 @@
 <template>
-  <p>it博客</p>
+  <div id="itBlog">
+    <el-row :gutter="0">
+      <el-col :span="6"><div class="grid-content bg-purple">
+        <itCategory-component></itCategory-component>
+      </div></el-col>
+      <el-col :span="18"><div class="grid-content bg-purple">
+        <!--<testContent-component></testContent-component>-->
+        <router-view></router-view>
+      </div>
+      </el-col>
+    </el-row>
+  </div>
+  </div>
 </template>
 
 <script>
+  import itCategoryComponent from './itCategory/category.vue'
+//  import testContentComponent from './itCategory/testContent.vue'
   export default {
     name: 'home',
     data () {
@@ -10,7 +24,8 @@
         msg: 'Welcome to Your Vue.js App'
       }
     },
-    comments: {}
+//    components: {categoryComponent, testContentComponent}
+    components: {itCategoryComponent}
   }
 </script>
 

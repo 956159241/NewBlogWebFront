@@ -8,10 +8,14 @@ import reads from '@/views/reads'
 import itBlogs from '@/views/itBlogs'
 import essay from '@/views/essay'
 import readDetail from '@/views/readDetail'
+// import itCategory from '@/views/itCategory/category'
+import testContent from '@/views/itCategory/testContent'
+import testContentOne from '@/views/itCategory/testContentOne'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -44,9 +48,23 @@ export default new Router({
       component: reads
     },
     {
-      path: '/itBlogs',
+      path: '/itBlogs/',
       name: 'itBlogs',
-      component: itBlogs
+      component: itBlogs,
+      children: [
+        // {
+        //   path: '/',
+        //   component: testContent
+        // },
+        {
+          path: 'testContentOne',
+          component: testContentOne
+        },
+        {
+          path: 'testContent',
+          component: testContent
+        }
+      ]
     },
     {
       path: '/essay',

@@ -27,6 +27,14 @@
               <li><a>共 {{totalPages}} 页</a></li>
             </ul>
           </div>
+
+          <div class="block">
+            <span class="demonstration">大于 7 页时的效果</span>
+            <el-pagination
+              layout="prev, pager, next"
+              :total= parseInt(totalPages)>
+            </el-pagination>
+          </div>
           <!--分页结束-->
         </div>
         <div class="col-lg-4 diaries-left">
@@ -63,20 +71,23 @@
       }
     },
     mounted: function () {
+      this.$http.get('/api/Diary/GetDiariesTotalNum').then(response => {
+        this.totalCount = response.data
+      })
+      console.log('total count: ' + this.totalCount)
       this.$http.get('/api/Diary/GetDiaries', {
         params: {
           pageIndex: 0,
-          pageSize: this.pageSize
+          pageSize: 3
         }
       }).then(response => {
         this.index = 1
         this.currentPage = 0
         this.diaries = response.data
-        this.totalPages = Math.ceil(parseInt(this.totalCount) / parseInt(this.pageSize))
+//        this.totalPages = Math.ceil(parseFloat(this.totalCount) / parseFloat(this.pageSize))
+        this.totalPages = parseInt(Math.ceil(parseFloat(this.totalCount) / parseFloat(this.pageSize)))
       })
-      this.$http.get('/api/Diary/GetDiariesTotalNum').then(response => {
-        this.totalCount = response.data
-      })
+      console.log('total pages' + this.totalPages)
     },
     filters: {
       formatDate (time) {

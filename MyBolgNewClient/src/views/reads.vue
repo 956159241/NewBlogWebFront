@@ -247,15 +247,16 @@
             <div class="other">
               <el-row>
                 <el-col :span="20"><div class="grid-content bg-purple head-line">
+                  <!--<p>{{ item.Content}}</p>-->
                   <router-link :to="{ name: 'readDetail', query: { Id: item.Id, Time: item.Time, Type: item.Type, Content: item.Content }}">
-                    <h4 v-on:click="toContent(item.Id)" style="cursor: pointer;text-align: left;">标题：{{item.Title}}</h4>
+                    <h4 style="cursor: pointer;text-align: left;">标题：{{item.Title}}</h4>
                     <!--<button @click="sendParams">传递</button>-->
                   </router-link>
                   <p class="abstract">{{item.Content.substr(0,100)}}...</p>
-                  <span>作者：{{item.Author}}</span>
-                  <span>测试Id：{{item.Id}}</span>
-                  <span>时间：{{item.Time.substr(0,10) | formatDate}}</span>
-                  <span>类型：{{item.Type}}</span>
+                  <span>{{item.Author}}</span>
+                  <!--<span>测试Id：{{item.Id}}</span>-->
+                  <span>{{item.Time.substr(0,10) | formatDate}}</span>
+                  <!--<span>类型：{{item.Type}}</span>-->
                 </div></el-col>
                 <el-col :span="4"><div class="grid-content bg-purple text-img">
                   <img v-bind:src="item.Picture" style="width:125px;height:100px;vertical-align: middle;margin-top: 30px;">
@@ -279,8 +280,17 @@
       </div>
       <!--右侧简介内容-->
       <div class="col-lg-4" style="background-color: yellow;">
-        我在右边
+        <!--top-->
+        <div class="rnav">
+          <li class="rnav1 "><span>散文</span></li>
+          <li class="rnav2 "><span>诗词</span></li>
+          <li class="rnav3 "><span>小说</span></li>
+          <li class="rnav4 "><span>杂文</span></li>
+        </div>
+        <!--最受欢迎-->
+        <div>最受欢迎的十篇文章</div>
       </div>
+    </div>
     </div>
 
   </div>
@@ -297,7 +307,7 @@
         reads: '',
         indexs: 3,  // 每次请求多少条数据
         pageSize: 3,
-        currentPage: [],
+        currentPage: '',
         totalPages: 3
       }
     },
@@ -318,6 +328,7 @@
         this.index = 1
         this.currentPage = 0
         this.reads = response.data
+        console.log(response.data)
       })
     },
     methods: {
@@ -360,9 +371,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  @import "../../static/css/readsHead.css";
+  @import "../../blog_static/css/readsHead.css";
   .grid-content.bg-purple.head-line{border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 15px;text-align: left;margin-right: 25px;}
   .grid-content.bg-purple.head-line>span{font-size: 13px; line-height: 20px; color: #999;}
   .abstract{font-size: 13px; line-height: 20px; color: #999;text-align: left;}
   .pagination>li{cursor: pointer;}
+  /*右侧顶部*/
+  .rnav {margin: 20px auto; overflow: hidden; }
+  .rnav li { width: 120px; text-align: center; display: inline-block; margin-bottom: 2px; height: 40px; line-height: 40px }
+  .rnav li span { color: #FFF; display: block; -webkit-transition: all 1s; -moz-transition: all 1s; -o-transition: all 1s; transition: all 1s }
+  .rnav1 { background: #e41637 }
+  .rnav2 { background: #f16b17 }
+  .rnav3 { background: #0f9c7c }
+  .rnav4 { background: #46ce14 }
+  .rnav li span:hover { background: rgba(255,255,255,0.2); -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); }
 </style>
+

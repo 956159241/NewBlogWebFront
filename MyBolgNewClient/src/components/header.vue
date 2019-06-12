@@ -3,10 +3,10 @@
     <!--顶部top-bar-->
     <div class="row top">
       <div class="col-lg-12 top-bar">
-        <div class="row top-content">
           <div class="col-lg-6 top-content-left">欢迎来到小站！</div>
-          <div class="col-lg-6 top-content-right"></div>
-        </div>
+          <div class="col-lg-6 top-content-right">
+            <!--<img class="weixin-logo" src="../../blog_static/images/myblognew-weixin-logo.png">-->
+          </div>
       </div>
     </div>
     <div class="row navigation">
@@ -29,7 +29,7 @@
 <style scoped>
   .container{width:100%;margin: 0 auto;padding:0px;margin:0px;}
   .row.top{background: #e6e6e6;height: 30px;line-height: 30px;vertical-align: middle;width:100%;margin:0px;}
-  .col-lg-12.top-bar{width: 1200px;margin: 0px;padding:0px;font-size:14px;}
+  .col-lg-12.top-bar{min-width: 1200px;margin: 0px;padding:0px;font-size:14px;}
   .col-lg-6.top-content-left{color:#646464;}
   .ls-nav>li:hover{cursor: pointer;}
   .row.navigation{width:100%;margin: 0px;padding:0px;}

@@ -17,7 +17,7 @@
     data () {
       return {
         Theme: '',
-        name: 'mynae'
+        name: 'myname'
       }
     },
     components: {headerComponent, footerComponent},

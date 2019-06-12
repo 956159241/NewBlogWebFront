@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <h1><a href="http://www.iotzzh.com/old/index.html" target="_blank">my blog old</a></h1>
-    <h1><a href="http://www.iotzzh.com/jf.html" target="_blank">jf website</a></h1>
-    <h1><a href="http://www.iotzzh.com/yt.html" target="_blank">yt website</a></h1>
-    <h1><a href="http://www.iotzzh.com/cjw.html" target="_blank">cjw website</a></h1>
+    <h1>This is test page!</h1>
   </div>
 </template>
 

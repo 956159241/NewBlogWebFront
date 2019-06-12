@@ -89,10 +89,10 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor']
     }),
-    // copy custom static assets
+    // copy custom blog_static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
+        from: path.resolve(__dirname, '../blog_static'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
