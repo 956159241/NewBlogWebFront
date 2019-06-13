@@ -21,6 +21,8 @@ import 'highlight.js/styles/googlecode.css'
 import hljs from 'highlight.js/lib/highlight'
 import javascript from 'highlight.js/lib/languages/javascript'
 hljs.registerLanguage('javascript', javascript)
+import '../semantic/dist/semantic.js'
+import '../semantic/dist/semantic.css'
 
 // import $ from 'jquery'
 

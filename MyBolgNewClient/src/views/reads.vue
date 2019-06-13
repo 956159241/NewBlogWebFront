@@ -288,9 +288,49 @@
           <li class="rnav4 "><span>杂文</span></li>
         </div>
         <!--最受欢迎-->
-        <div>最受欢迎的十篇文章</div>
-      </div>
+        <h4 class="ui horizontal divider header"> 推进文章 </h4>
+        <p>文章一</p>
+        <p>文章二</p>
+        <p>文章三</p>
+        <p>文章四</p>
+        <p>文章五</p>
+
+        <h4 class="ui horizontal divider header"> 推荐作者 </h4>
+        <!-- card -->
+        <div class="ui link card">
+  <div class="content">
+    <div class="header">杜甫</div>
+    <div class="meta">
+      <span class="category">诗人</span>
     </div>
+    <div class="description">
+      <p>优秀的诗人</p>
+    </div>
+  </div>
+  <div class="extra content">
+    <div class="right floated author"><img class="ui avatar image" src="../../blog_static/images/logo.png"> Matt </div>
+  </div>
+</div>
+
+        <div class="ui link card">
+  <div class="content">
+    <div class="header">李白</div>
+    <div class="meta">
+      <span class="category">诗人</span>
+    </div>
+    <div class="description">
+      <p>优秀的诗人</p>
+    </div>
+  </div>
+  <div class="extra content">
+    <div class="right floated author"><img class="ui avatar image" src="../../blog_static/images/logo.png"> Matt </div>
+  </div>
+</div>
+
+        <!-- card -->
+
+      </div>
+      </div>
     </div>
 
   </div>
