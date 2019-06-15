@@ -18,7 +18,7 @@
             <label>电子邮件</label><br/>
             <el-input
               placeholder="请输入邮箱"
-              v-model="name1"
+              v-model="name"
               clearable>
             </el-input>
           </li>

@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    </el-dialog>
     <div class="block">
       <el-carousel height="300px">
 
@@ -30,6 +29,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .container{width: 100%;margin: 0px;padding: 0px;}
+  .block{text-align: center;}
 
   .el-carousel__item h3 {
     color: #475669;
