@@ -48,7 +48,7 @@ export default new Router({
       component: reads
     },
     {
-      path: '/itBlogs/',
+      path: '/itBlogs',
       name: 'itBlogs',
       component: itBlogs,
       children: [
@@ -58,10 +58,12 @@ export default new Router({
         // },
         {
           path: 'testContentOne',
+          name: 'testContentOne',
           component: testContentOne
         },
         {
           path: 'testContent',
+          name: 'testContent',
           component: testContent
         }
       ]
